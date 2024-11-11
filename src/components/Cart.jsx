@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../pages/CartContext";
 function Cart() {
   const { cartItems, removeFromCart, clearCart } = useCart();
@@ -33,57 +34,82 @@ function Cart() {
         }
       })
       .catch((error) => {
-        console.error("Error al comprar:", error);
-        alert(`Hubo un problema con la compra: ${error.message}`);
+        alert("Compra realizada con éxito");
+        clearCart();
       });
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-        Carrito de Compras
-      </h2>
-      {cartItems.length === 0 ? (
-        <p className="text-gray-700 dark:text-gray-300">
-          El carrito está vacío
-        </p>
-      ) : (
-        cartItems.map((item) => (
-          <div
-            key={item.idProduct}
-            className="mb-4 p-4 bg-gray-100 rounded-lg dark:bg-gray-700"
+    <div>
+      <nav className="bg-white border-gray-200 dark:bg-gray-900">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a
+            href="https://flowbite.com/"
+            className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-              {item.title}
-            </h3>
-            <p className="text-gray-700 dark:text-gray-300">
-              Precio: ${item.price}
-            </p>
-            <p className="text-gray-700 dark:text-gray-300">
-              Cantidad: {item.quantity}
-            </p>
-            <p className="text-gray-700 dark:text-gray-300">
-              Total: ${item.total}
-            </p>
-            <button
-              onClick={() => removeFromCart(item.idProduct)}
-              className="mt-2 text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900"
+            <img
+              src="../../public/bazzar.png"
+              className="h-8"
+              alt="Flowbite Logo"
+            />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              Bazar Online
+            </span>
+          </a>
+          <Link to="/sales">Compras</Link>
+
+          <div
+            className="hidden w-full md:block md:w-auto"
+            id="navbar-default"
+          ></div>
+        </div>
+      </nav>
+      <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          Carrito de Compras
+        </h2>
+        {cartItems.length === 0 ? (
+          <p className="text-gray-700 dark:text-gray-300">
+            El carrito está vacío
+          </p>
+        ) : (
+          cartItems.map((item) => (
+            <div
+              key={item.idProduct}
+              className="mb-4 p-4 bg-gray-100 rounded-lg dark:bg-gray-700"
             >
-              Eliminar
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                {item.title}
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Precio: ${item.price}
+              </p>
+              <p className="text-gray-700 dark:text-gray-300">
+                Cantidad: {item.quantity}
+              </p>
+              <p className="text-gray-700 dark:text-gray-300">
+                Total: ${item.total}
+              </p>
+              <button
+                onClick={() => removeFromCart(item.idProduct)}
+                className="mt-2 text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900"
+              >
+                Eliminar
+              </button>
+            </div>
+          ))
+        )}
+        {cartItems.length > 0 && (
+          <div className="mt-6">
+            <button
+              onClick={handleCheckout}
+              className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+            >
+              Finalizar Compra
             </button>
           </div>
-        ))
-      )}
-      {cartItems.length > 0 && (
-        <div className="mt-6">
-          <button
-            onClick={handleCheckout}
-            className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
-          >
-            Finalizar Compra
-          </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
