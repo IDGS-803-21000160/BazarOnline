@@ -12,7 +12,6 @@ function Sales() {
 
   return (
     <div>
-      <h2>Compras Registradas</h2>
       <ListSales sales={sales} />
     </div>
   );

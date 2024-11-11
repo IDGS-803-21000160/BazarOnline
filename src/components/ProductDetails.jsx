@@ -7,8 +7,8 @@ const ProductDetails = ({ product }) => {
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
             <img
-              className="p-8 rounded-t-lg"
-              src="{{product.thumbnail}}"
+              className="w-28 h-28 rounded-full mx-auto"
+              src={product.thumbnail}
               alt="product image"
             />
           </a>

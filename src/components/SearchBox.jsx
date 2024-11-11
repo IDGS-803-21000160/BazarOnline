@@ -30,8 +30,19 @@ const SearchBox = () => {
                 Bazar Online
               </span>
             </a>
-            <Link to="/cart">Carrito ({cartItems.length})</Link>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-6 ml-24"
+            >
+              <path d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" />
+            </svg>
+            <Link to="/cart"> </Link>
 
+            <span className="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+              <Link to="/cart"> {cartItems.length}</Link>
+            </span>
             <div
               className="hidden w-full md:block md:w-auto"
               id="navbar-default"
