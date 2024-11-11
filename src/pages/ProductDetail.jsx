@@ -7,7 +7,7 @@ function ProductDetail() {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`http://backbazarapis.somee.com/api/sales/items/${id}`)
+    fetch(`https://backbazarapis.somee.com/api/sales/items/${id}`)
       .then((response) => response.json())
       .then((data) => setProduct(data))
       .catch((error) => console.error("Error fetching data:", error));

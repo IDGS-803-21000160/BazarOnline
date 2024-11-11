@@ -8,7 +8,7 @@ function SearchResults() {
   const query = new URLSearchParams(location.search).get("search");
 
   useEffect(() => {
-    fetch(`http://backbazarapis.somee.com/api/sales/items${query}`)
+    fetch(`https://backbazarapis.somee.com/api/sales/items${query}`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

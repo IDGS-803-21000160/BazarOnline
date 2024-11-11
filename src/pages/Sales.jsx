@@ -4,7 +4,7 @@ function Sales() {
   const [sales, setSales] = useState([]);
 
   useEffect(() => {
-    fetch("http://backbazarapis.somee.com/api/sales/sales")
+    fetch("https://backbazarapis.somee.com/api/sales/sales")
       .then((response) => response.json())
       .then((data) => setSales(data))
       .catch((error) => console.error("Error fetching data:", error));
